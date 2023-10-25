@@ -1,5 +1,10 @@
-import { Card, Col, Container, Form, Image, Row } from "react-bootstrap";
-import books from "../data/fantasy.json";
+import { Card, Col, Container, Form, Row, Tab, Tabs } from "react-bootstrap";
+import fantasy from "../data/fantasy.json";
+import history from "../data/history.json";
+import horror from "../data/horror.json";
+import romance from "../data/romance.json";
+import scifi from "../data/scifi.json";
+
 import { useState } from "react";
 
 function SingleBook({ book }) {
@@ -25,14 +30,36 @@ function SingleBook({ book }) {
   );
 }
 
+const BooksByGenre = {
+  fantasy,
+  history,
+  horror,
+  romance,
+  scifi,
+};
+
 export default function AllTheBooks() {
   const [query, setQuery] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("fantasy");
+
+  const books = BooksByGenre[selectedGenre];
 
   const booksByQuery = (book) =>
     book.title.toLowerCase().includes(query.toLowerCase());
 
   return (
     <Container>
+      <Tabs
+        defaultActiveKey="profile"
+        id="justify-tab-example"
+        className="my-3"
+        justify
+        onSelect={(genre) => setSelectedGenre(genre)}
+      >
+        {Object.keys(BooksByGenre).map((genre) => (
+          <Tab eventKey={genre} title={genre} />
+        ))}
+      </Tabs>
       <Form.Group className="py-4">
         <Form.Label>Search</Form.Label>
         <Form.Control
@@ -43,7 +70,7 @@ export default function AllTheBooks() {
       </Form.Group>
       <Row className="row-gap-3">
         {books.filter(booksByQuery).map((book) => (
-          <SingleBook book={book} />
+          <SingleBook book={book} key={book.asin} />
         ))}
       </Row>
     </Container>
