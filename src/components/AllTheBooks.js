@@ -38,8 +38,7 @@ const BooksByGenre = {
   scifi,
 };
 
-export default function AllTheBooks() {
-  const [query, setQuery] = useState("");
+export default function AllTheBooks({ query }) {
   const [selectedGenre, setSelectedGenre] = useState("fantasy");
 
   const books = BooksByGenre[selectedGenre];
@@ -60,14 +59,14 @@ export default function AllTheBooks() {
           <Tab eventKey={genre} title={genre} />
         ))}
       </Tabs>
-      <Form.Group className="py-4">
+      {/* <Form.Group className="py-4">
         <Form.Label>Search</Form.Label>
         <Form.Control
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-      </Form.Group>
+      </Form.Group> */}
       <Row className="row-gap-3">
         {books.filter(booksByQuery).map((book) => (
           <SingleBook book={book} key={book.asin} />
