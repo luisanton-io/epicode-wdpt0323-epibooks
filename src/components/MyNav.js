@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Form } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -21,7 +20,7 @@ export default function MyNav({ query, setQuery }) {
               <Form.Control
                 type="text"
                 value={query}
-                placeholder="Search..."
+                placeholder="Search for books"
                 onChange={(e) => setQuery(e.target.value)}
               />
             </Form.Group>

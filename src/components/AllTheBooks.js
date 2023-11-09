@@ -1,4 +1,4 @@
-import { Card, Col, Container, Form, Row, Tab, Tabs } from "react-bootstrap";
+import { Card, Col, Container, Row, Tab, Tabs } from "react-bootstrap";
 import fantasy from "../data/fantasy.json";
 import history from "../data/history.json";
 import horror from "../data/horror.json";
@@ -11,7 +11,7 @@ function SingleBook({ book }) {
   const [selected, setSelected] = useState(false);
 
   return (
-    <Col xs={4} className="d-flex">
+    <Col xs={4} className="d-flex" data-testid="book">
       <Card
         onClick={() => setSelected(!selected)}
         className="flex-grow-1"

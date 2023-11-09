@@ -3,8 +3,8 @@ import { Alert, Container } from "react-bootstrap";
 export default function Welcome() {
   return (
     <>
-      <Alert variant={"info"} className="mb-0">
-        <Container>Welcome to Epibooks!</Container>
+      <Alert variant={"info"} className="mb-0" data-testid="welcome">
+        <Container>Welcome to EPICODE!</Container>
       </Alert>
       <Container fluid className="py-5 bg-info text-white">
         <Container>
